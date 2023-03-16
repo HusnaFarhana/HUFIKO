@@ -1,0 +1,232 @@
+<%-include('../layouts/header.ejs') -%>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="assets" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
+    <script>
+      function validate() {
+        var username = document.getElementById("username");
+        var email = document.getElementById("email");
+        var mobilenumber = document.getElementById("mobilenumber");
+        var dob = document.getElementById("dob");
+        var password = document.getElementById("password").value;
+        var cpassword = document.getElementById("cpassword").value;
+        let specialCharacters = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
+      
+       
+        if (username.value.trim() == "") {
+          document.getElementById("lbluser").style.visibility = "visible";
+          return false;
+        } else if (username.value.trim() !== "") {
+          document.getElementById("lbluser").style.visibility = "hidden";
+        }
+        
+        if(specialCharacters.test(username.value)){
+          console.log("input here")
+          document.getElementById("lbluser").style.visibility = "visible";
+          return false
+        }else{
+            document.getElementById("lbluser").style.visibility = "hidden";
+        }
+
+        if (mobilenumber.value.trim().length < 10) {
+          document.getElementById("lblmobile").style.visibility = "visible";
+          return false;
+        } else if (mobilenumber.value.trim().length > 9) {
+          document.getElementById("lblmobile").style.visibility = "hidden";
+        }
+        if(specialCharacters.test(mobilenumber.value)){
+          console.log("spcl num")
+          document.getElementById("lblmobile").style.visibility = "visible";
+          return false
+        }else{
+            document.getElementById("lblmobile").style.visibility = "hidden";
+        }
+
+
+        if (password.length < 5) {
+          document.getElementById("lblpass").style.visibility = "visible";
+          return false;
+        } else {
+          document.getElementById("lblpass").style.visibility = "hidden";
+        }
+        if(specialCharacters.test(password.value)){
+          console.log("spcl pass")
+          document.getElementById("lblpass").style.visibility = "visible";
+          return false
+        }else{
+            document.getElementById("lblpass").style.visibility = "hidden";
+        }
+
+
+        if (password !== cpassword) {
+          document.getElementById("lblcpass").style.visibility = "visible";
+          return false;
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <style>
+      body {
+        background-image: url(assets/img/bg8.png);
+        height: 100vh !important;
+        background-size: cover;
+        background-repeat: no-repeat;
+        object-fit: fill;
+      }
+      .signupform {
+        background-color: rgba(193, 150, 107, 0);
+      }
+    </style>
+
+    <section class="vh-100 gradient-custom">
+      <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+            <div
+              class="card signupform text-white shadow-lg"
+              style="border-radius: 1rem"
+            >
+              <div class="card-body p-5 text-center">
+                <div class="mt-md-4">
+                  <h2 class="fw-bold mb-2 text-uppercase">Sign Up</h2>
+                  <p class="text-secondary-50 mb-5">
+                    Please enter your details
+                  </p>
+                  <% if(typeof message1 !=='undefined' ) {%>
+                  <div id="flash-msg" class="alert alert-danger">
+                    <%= message1 %>
+                  </div>
+                  <%}%>
+                  <form action="" method="POST" onsubmit="return validate()" id="myForm">
+                    <div class="form-outline form-white mb-4">
+                      <input
+                        type="text"
+                        id="username"
+                        class="form-control form-control-lg"
+                        placeholder="Enter username"
+                        name="username"
+                        required
+                      />
+                      <label
+                        id="lbluser"
+                        style="color: rgb(209, 32, 32); visibility: hidden"
+                        >Invalid Username</label
+                      >
+                    </div>
+
+                    <div class="form-outline form-white mb-4">
+                      <input
+                        type="email"
+                        id="email"
+                        class="form-control form-control-lg"
+                        placeholder="Enter Email"
+                        required
+                        name="email"
+                      />
+                      <label
+                        id="lblemail"
+                        style="color: rgb(209, 32, 32); visibility: hidden"
+                        >Invalid Email</label
+                      >
+                    </div>
+
+                    <div class="form-outline form-white mb-4">
+                      <input
+                        type="text"
+                        id="mobilenumber"
+                        class="form-control form-control-lg"
+                        placeholder="Mobile Number"
+                        name="mobilenumber"
+                        required
+                      />
+                      <label
+                        id="lblmobile"
+                        style="color: rgb(209, 32, 32); visibility: hidden"
+                        >Invalid Mobile Number</label
+                      >
+                    </div>
+
+                    <div class="form-outline form-white mb-4">
+                      <select name="gender" id="gender" class="form-select">
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                      </select>
+                    </div>
+
+                    <div class="form-outline form-white mb-4">
+                      <input
+                        type="password"
+                        id="password"
+                        class="form-control form-control-lg"
+                        placeholder="Enter Password"
+                        required
+                        name="password"
+                      />
+
+                      <label
+                        id="lblpass"
+                        style="color: rgb(209, 32, 32); visibility: hidden"
+                        >Invalid password</label
+                      >
+                    </div>
+                    <div class="form-outline form-white mb-4">
+                      <input
+                        type="password"
+                        id="cpassword"
+                        class="form-control form-control-lg"
+                        placeholder="Confirm Password"
+                        required
+                        name="cpassword"
+                      />
+
+                      <label
+                        id="lblcpass"
+                        style="color: rgb(209, 32, 32); visibility: hidden"
+                        >Incorrect Password</label
+                      >
+                    </div>
+
+                    <button
+                      class="btn btn-outline-light btn-lg px-5 fw-bold"
+                      type="submit"
+                    >
+                      Sign Up
+                    </button>
+                  </form>
+                  <br />
+                  <br />
+                  <% if(typeof message !=='undefined'){ %>
+                  <h4><%= message %></h4>
+
+                  <% } %>
+                </div>
+
+                <div>
+                  <p class="mb-0 text-dark fw-bold">
+                    Already have an account?
+                    <a href="/login" class="text-dark-50 fw-bold">Log In</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

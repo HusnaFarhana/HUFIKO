@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>ADMIN</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="/img2/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="/lib2/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="/lib2/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="/css2/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="/css2/style.css" rel="stylesheet">
+    <script>
+      function popup(){
+        alert("Product edited")
+      }
+
+      function validate(){
+        var username = document.getElementById("username")
+        var email = document.getElementById("email")
+        var mobilenumber = document.getElementById("mobilenumber")
+        var dob = document.getElementById("dob")
+        var password = document.getElementById("password")
+
+        if(username.value.trim()==""){
+      
+      document.getElementById("lbluser")
+      .style.visibility="visible"
+      return false;
+
+    }else if(username.value.trim()!==""){
+  
+      document.getElementById("lbluser")
+      .style.visibility="hidden"
+      
+
+    }
+    
+    if(mobilenumber.value.trim().length<10){
+
+      document.getElementById("lblmobile")
+      .style.visibility="visible"
+      return false;
+
+    }else if(mobilenumber.value.trim().length>9){
+
+      document.getElementById("lblmobile")
+      .style.visibility="hidden"
+      
+
+    }
+
+   
+    
+    if(password.value.trim()==""){
+
+      document.getElementById("lblpass")
+      .style.visibility="visible"
+      return false;
+
+    }else if(password.value.trim().length<5){
+
+      document.getElementById("lblpass")
+      .style.visibility="visible"
+      return false;
+
+    }else{
+      
+      return true;
+
+    }
+      } 
+    </script>
+</head>
+
+<body>
+    <div class="container-xxl position-relative bg-white d-flex p-0">
+       
+
+
+        <!-- Sidebar Start -->
+        <div class="sidebar pe-4 pb-3">
+            <nav class="navbar bg-light navbar-light">
+                <a href="/admin/admin-dashboard" class="navbar-brand mx-4 mb-3">
+                    <h3 class="text-primary"><i class="fa me-2"></i>MAJESTIC</h3>
+                </a>
+                
+                <div class="navbar-nav w-100">
+                    <a href="/admin/admin-dashboard" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                    <a href="/admin/admin-orders" class="nav-item nav-link"><i class="fa fa-laptop me-2"></i>Orders</a>
+                    <a href="/admin/admin-users" class="nav-item nav-link"><i class="fa fa-users me-2"></i>Users</a>
+                    <a href="/admin/admin-products" class="nav-item nav-link active"><i class="fa fa-keyboard me-2"></i>Products</a>
+                   <a href="/admin/admin-category" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Category</a>
+                                    <a href="/admin/admin-coupon" class="nav-item nav-link"><i class="fa fa-id-card-alt me-2"></i>Coupon</a>
+<a href="/admin/admin-sales" class="nav-item nav-link"
+              ><i class="fa fa-book me-2"></i>Sales Report</a
+            >
+                  </div>
+            </nav>
+        </div>
+        <!-- Sidebar End -->
+
+
+        <!-- Content Start -->
+        <div class="content">
+            <!-- Navbar Start -->
+            <nav class="navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0">
+                <a href="index2.html" class="navbar-brand d-flex d-lg-none me-4">
+                    <h2 class="text-primary mb-0"><i class="fa fa-hashtag"></i></h2>
+                </a>
+                <a href="#" class="sidebar-toggler flex-shrink-0">
+                    <i class="fa fa-bars"></i>
+                </a>
+                <form class="d-none d-md-flex ms-4">
+                    <input class="form-control border-0" type="search" placeholder="Search">
+                </form>
+                <div class="navbar-nav align-items-center ms-auto">
+                
+                   
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                            <span class="d-none d-lg-inline-flex">Admin</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
+                            <a href="/admin/admin-logout" class="dropdown-item">Log Out</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <!-- Navbar End -->
+           <div class="contentbox ps-4 pt-4 pe-4">
+            <h4>Edit Product</h4>
+            <br>
+            
+            <form action="" method="POST" enctype="multipart/form-data" onsubmit="return validate()">
+              <img src="product-images/<%= product.image[0] %>" width="100px" height="100px" alt="<%= product.image[0] %>">
+              <img src="product-images/<%= product.image[1] %>" width="100px" height="100px" alt="<%= product.image[1] %>">
+
+              <br>
+              <br>
+                <input type="hidden" name="productid" value="<%= product._id %>">
+                <!-- 2 column grid layout with text inputs for the first and last names -->
+                <div class="row mb-4">
+                 
+                  <div class="col">
+                    <div class="form-outline">
+                      <input type="file" id="proimage" name="proimage" class="form-control" value="product-images/<%= product.image[0] %>" multiple/>
+                      <label class="form-label" for="form6Example2">Image</label>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-outline">
+                      <input type="text" id="proname" name="proname" class="form-control" value="<%= product.productname %>" />
+                      <label class="form-label" for="form6Example1">Product Name</label>
+                    <label
+                    id="lblname"
+                    style="color: rgb(209, 32, 32); visibility: hidden"
+                  >
+                    Invalid Name</label
+                  >
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row mb-4">
+                    
+                    <div class="col">
+                      <div class="form-outline">
+                        <input type="text" id="proprice" name="proprice" class="form-control" value="<%= product.price %>"/>
+                        <label class="form-label" for="form6Example2">Price</label>
+                        <label
+                    id="lblprice"
+                    style="color: rgb(209, 32, 32); visibility: hidden"
+                  >
+                    Invalid Price</label
+                  >
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="form-outline">
+                        
+                        <label class="form-label" for="form6Example1">Category</label>
+                        <select name="procategory" id="procategory" style="border-radius: 8px; width: 100px;">
+                          <option selected disabled value="">Choose</option>
+                    <%if(categories){ categories.forEach(data=> {%>
+                    <option><%= data.name %></option>
+                    <% })} %>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row mb-4">
+                    
+                    <div class="col">
+                      <div class="form-outline">
+                        <input type="text" id="prostatus" name="prostatus" class="form-control" value="<%= product.status %>"/>
+                        <label class="form-label" for="form6Example2">Status</label>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="form-outline">
+                        <label class="form-label" for="form6Example1">Stock</label>
+                        <select name="prostock" id="prostock" style="border-radius: 8px; width: 100px;">
+                          <option value="Instock">Instock</option>
+                          <option value="Out of stock">Out of stock</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="row mb-4">
+                    <div class="col">
+                      <div class="form-outline">
+                        <input type="text" id="proname" name="prodes" class="form-control" value="<%= product.description %>"/>
+                        <label class="form-label" for="form6Example1">Description</label>
+                      <label
+                    id="lbldes"
+                    style="color: rgb(209, 32, 32); visibility: hidden"
+                  >
+                    Invalid Description</label
+                  >
+                         </div>
+                    </div>
+                    <div class="col">
+                      <div class="form-outline">
+                        <!-- <input type="text" id="proname" name="prodiscount" class="form-control" value="<%= product.discount %>"/>
+                        <label class="form-label" for="form6Example1">Discount</label>
+                      -->
+                       </div>
+                    </div>
+                  </div>
+                <button type="submit" class="btn btn-primary btn-block mb-4" onclick="popup()">Update Product</button>
+              </form>
+
+
+
+
+           </div>
+
+            
+
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+    </div>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/lib2/chart/chart.min.js"></script>
+    <script src="/lib2/easing/easing.min.js"></script>
+    <script src="/lib2/waypoints/waypoints.min.js"></script>
+    <script src="/lib2/owlcarousel/owl.carousel.min.js"></script>
+    <script src="/lib2/tempusdominus/js/moment.min.js"></script>
+    <script src="/lib2/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="/lib2/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="/js2/main.js"></script>
+</body>
+
+</html>

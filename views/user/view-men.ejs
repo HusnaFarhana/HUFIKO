@@ -1,0 +1,749 @@
+<%-include('../layouts/header.ejs') -%>
+
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+  <head>
+    <script src="https://code.iconify.design/iconify-icon/1.0.5/iconify-icon.min.js"></script>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- ===============================================-->
+    <!--    Document Title-->
+    <!-- ===============================================-->
+    <title>Majestic | Landing, Ecommerce &amp; Business Templatee</title>
+
+    <!-- ===============================================-->
+    <!--    Favicons-->
+    <!-- ===============================================-->
+    <link rel="apple-touch-icon" sizes="180x180" href="" />
+    <!-- assets/img/favicons/apple-touch-icon.png -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/img/favicons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="assets/img/favicons/favicon-16x16.png"
+    />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="assets/img/favicons/favicon.ico"
+    />
+    <link rel="manifest" href="assets/img/favicons/manifest.json" />
+    <meta
+      name="msapplication-TileImage"
+      content="assets/img/favicons/mstile-150x150.png"
+    />
+    <meta name="theme-color" content="#ffffff" />
+
+    <!-- ===============================================-->
+    <!--    Stylesheets-->
+    <!-- ===============================================-->
+    <link href="assets/css/theme.css" rel="stylesheet" />
+    <script>
+      function popupcart() {
+        swal("Cartified!", "Item has been added to Cart!", "success");
+      }
+      function popupwishlist() {
+        swal("Wishlisted!", "Item has been added to Wishlist!", "success");
+      }
+    </script>
+    <style>
+      .productarea {
+        margin-top: 10%;
+      }
+
+      .container img {
+        width: 100%;
+        height: auto;
+      }
+
+      .wcheck .wbtn {
+        position: absolute;
+        top: 10%;
+        left: 85%;
+
+        transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        background-color: #f1f1f100;
+        color: black;
+        font-size: 26px;
+        padding: 6px 10px;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        text-align: center;
+      }
+
+      .wcheck .wbtn:hover {
+        background-color: rgba(0, 0, 0, 0.716);
+        color: white;
+      }
+
+      .button-17 {
+        align-items: center;
+        appearance: none;
+        background-color: #fff;
+        border-radius: 24px;
+        border-style: none;
+        box-shadow: rgba(0, 0, 0, 0.2) 0 3px 5px -1px,
+          rgba(0, 0, 0, 0.14) 0 6px 10px 0, rgba(0, 0, 0, 0.12) 0 1px 18px 0;
+        box-sizing: border-box;
+        color: #3c4043;
+        cursor: pointer;
+        display: inline-flex;
+        fill: currentcolor;
+        font-family: "Google Sans", Roboto, Arial, sans-serif;
+        font-size: 14px;
+        font-weight: 500;
+        height: 48px;
+        justify-content: center;
+        letter-spacing: 0.25px;
+        line-height: normal;
+        max-width: 100%;
+        overflow: visible;
+        padding: 2px 24px;
+        position: relative;
+        text-align: center;
+        text-transform: none;
+        transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1),
+          opacity 15ms linear 30ms,
+          transform 270ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        width: auto;
+        will-change: transform, opacity;
+        z-index: 0;
+      }
+
+      .button-17:hover {
+        background: #f6f9fe;
+        color: #174ea6;
+      }
+
+      .button-17:active {
+        box-shadow: 0 4px 4px 0 rgb(60 64 67 / 30%),
+          0 8px 12px 6px rgb(60 64 67 / 15%);
+        outline: none;
+      }
+
+      .button-17:focus {
+        outline: none;
+        border: 2px solid #4285f4;
+      }
+
+      .button-17:not(:disabled) {
+        box-shadow: rgba(60, 64, 67, 0.3) 0 1px 3px 0,
+          rgba(60, 64, 67, 0.15) 0 4px 8px 3px;
+      }
+
+      .button-17:not(:disabled):hover {
+        box-shadow: rgba(60, 64, 67, 0.3) 0 2px 3px 0,
+          rgba(60, 64, 67, 0.15) 0 6px 10px 4px;
+      }
+
+      .button-17:not(:disabled):focus {
+        box-shadow: rgba(60, 64, 67, 0.3) 0 1px 3px 0,
+          rgba(60, 64, 67, 0.15) 0 4px 8px 3px;
+      }
+
+      .button-17:not(:disabled):active {
+        box-shadow: rgba(60, 64, 67, 0.3) 0 4px 4px 0,
+          rgba(60, 64, 67, 0.15) 0 8px 12px 6px;
+      }
+
+      .button-17:disabled {
+        box-shadow: rgba(60, 64, 67, 0.3) 0 1px 3px 0,
+          rgba(60, 64, 67, 0.15) 0 4px 8px 3px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- ===============================================-->
+    <!--    Main Content-->
+    <!-- ===============================================-->
+
+    <main class="main" id="top">
+      <nav
+        class="navbar navbar-expand-lg navbar-light fixed-top py-3 d-block"
+        data-navbar-on-scroll="data-navbar-on-scroll"
+      >
+        <div class="container">
+          <a class="navbar-brand d-inline-flex" href="/"
+            ><img
+              class="d-inline-block"
+              src="assets/img/gallery/logo.png"
+              alt="logo"
+            /><span class="text-1000 fs-0 fw-bold ms-2">Majestic</span></a
+          >
+          <button
+            class="navbar-toggler collapsed"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div
+            class="collapse navbar-collapse border-top border-lg-0 mt-4 mt-lg-0"
+            id="navbarSupportedContent"
+          >
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <% cate.forEach(function(cate){%>
+              <li class="nav-item px-2">
+                <a
+                  class="nav-link fw-medium active"
+                  aria-current="page"
+                  href="/view-<%= cate.name %>"
+                  ><%= cate.name%></a
+                >
+              </li>
+              <%})%>
+              <li class="nav-item px-2">
+                <a class="nav-link fw-medium" href="/viewProducts">All Items</a>
+              </li>
+            </ul>
+            <form class="d-flex">
+              
+
+              <% if(typeof abc !=='undefined'){ %> <% if (abc=="loggedout") { %>
+              <a href="/login">Log In</a>
+              <%} else { %>
+<a class="text-1000" href="/view-orders">
+                <svg
+                  class="feather feather-phone me-3"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+                  ></path></svg
+              ></a>
+              <a class="text-1000" href="/view-cart">
+                <svg
+                  class="feather feather-shopping-cart me-3"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <circle cx="9" cy="21" r="1"></circle>
+                  <circle cx="20" cy="21" r="1"></circle>
+                  <path
+                    d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"
+                  ></path></svg
+              ></a>
+
+              <a class="text-1000" href="/view-profile">
+                <svg
+                  class="feather feather-user me-3"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle></svg
+              ></a>
+
+              <a class="text-1000" href="/view-wishlist">
+                <svg
+                  class="feather feather-heart me-3"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
+                  ></path></svg
+              ></a>
+
+              <a href="/logout">Log Out</a>
+              <% } %> <% } %>
+            </form>
+          </div>
+        </div>
+      </nav>
+
+      <div
+        class="row h-100 align-items-center g-2 container productarea"
+        style="margin-left: 5%"
+      >
+        <div class="col-lg-12 mx-auto text-center mb-6">
+          <h5 class="fs-3 fs-lg-5 lh-sm mb-3">Men's Watches</h5>
+        </div>
+        <% product.forEach(function(product){%>
+        <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
+          <div class="card card-span h-100 text-white wcheck bg-transparent">
+            <img
+              class="img-fluid h-100"
+              src="product-images/<%= product.image[0] %>"
+              alt="..."
+            />
+
+            <div class="card-img-overlay ps-0">
+              <a
+                href="/product-view?id=<%= product._id %>"
+                class="btn btn-transparent stretched-link"
+              ></a>
+            </div>
+            <div class="card-body ps-0 bg-200">
+              <h5 class="fw-bold text-1000 text-truncate">
+                <%= product.productname %>
+              </h5>
+              <div class="fw-bold">
+                <span class="text-600 me-2 text-decoration-line-through"
+                  >$200</span
+                ><span class="text-primary">Rs:<%= product.price %></span>
+              </div>
+            </div>
+             <% if(typeof abc !=='undefined'){ %> <% if (abc=="loggedin") { %>
+
+            <button
+              class="button-17"
+              style="z-index: 1;"
+              role="button"
+              onclick="addToCart('<%= product._id %>');popupcart()"
+            >
+              Add to Cart
+            </button>
+            <br>
+            <button
+              class="button-17"
+              style="z-index: 1;"
+              role="button"
+              onclick="popupwishlist();addToWishlist('<%= product._id %>')"
+            >
+              Add to Wishlist
+            </button>
+            <% } %> <% } %>
+
+            <br /><br /><br /><br />
+            <script>
+              function addToCart(id) {
+                $.ajax({
+                  url: "/add-to-cart",
+                  method: "post",
+                  encoded: true,
+                  data: {
+                    id: id,
+                  },
+                }).done((data) => {
+                  console.log(data);
+                  if (data.success) {
+                    window.location.reload();
+                  }
+                });
+              }
+
+              function addToWishlist(id) {
+                $.ajax({
+                  url: "/add-to-wishlist",
+                  method: "post",
+                  encoded: true,
+                  data: {
+                    id: id,
+                  },
+                }).done((data) => {
+                  console.log(data);
+                  if (data.success) {
+                    window.location.reload();
+                  }
+                });
+              }
+            </script>
+          </div>
+        </div>
+        <%})%>
+
+          </div>
+          <div>
+                 </div>
+
+      <!-- ============================================-->
+      <!-- <section> begin<div><button>add to cart</button></div> ============================-->
+
+      <!-- <section> close ============================-->
+      <!-- ============================================-->
+
+      <br /><br /><br />
+      <section class="py-0">
+        <div class="container">
+          <div class="row h-100">
+            <div class="col-lg-7 mx-auto text-center mb-6">
+              <h5 class="fs-3 fs-lg-5 lh-sm mb-3">Checkout New Arrivals</h5>
+            </div>
+            <div class="col-12">
+              <div
+                class="carousel slide"
+                id="carouselNewArrivals"
+                data-bs-ride="carousel"
+              >
+                <div class="carousel-inner">
+                  <div class="carousel-item active" data-bs-interval="10000">
+                    <div class="row h-100 align-items-center g-2">
+                      <% newProducts.forEach(function(product){%>
+
+                      <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
+                        <div class="card card-span h-100 text-white">
+                          <img
+                            class="card-img h-100"
+                            src="product-images/<%= product.image[0]%>"
+                            alt="..."
+                          />
+                          <div
+                            class="card-img-overlay bg-dark-gradient d-flex flex-column-reverse"
+                          >
+                            <h6 class="text-primary">Rs: <%= product.price%></h6>
+                            <p class="text-400 fs-1"><%= product.productname %></p>
+                        
+                          </div>
+                          <a class="stretched-link" href="/viewProducts"></a>
+                        </div>
+                      </div>
+                       <%})%>
+                    </div>
+                  </div>
+                  <div class="carousel-item" data-bs-interval="5000">
+                    <div class="row h-100 align-items-center g-2">
+                      <% newProducts2.forEach(function(product){%>
+
+                      <div class="col-sm-6 col-md-3 mb-3 mb-md-0 h-100">
+                        <div class="card card-span h-100 text-white">
+                          <img
+                            class="card-img h-100"
+                            src="product-images/<%= product.image[0]%>"
+                            alt="..."
+                          />
+                          <div
+                            class="card-img-overlay bg-dark-gradient d-flex flex-column-reverse"
+                          >
+                            <h6 class="text-primary">Rs: <%= product.price%></h6>
+                            <p class="text-400 fs-1"><%= product.productname %></p>
+                      
+                          </div>
+                          <a class="stretched-link" href="/viewProducts"></a>
+                        </div>
+                      </div>
+                      <%})%>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <button
+                      class="carousel-control-prev"
+                      type="button"
+                      data-bs-target="#carouselNewArrivals"
+                      data-bs-slide="prev"
+                    >
+                      <span
+                        class="carousel-control-prev-icon"
+                        aria-hidden="true"
+                      ></span
+                      ><span class="visually-hidden">Previous</span>
+                    </button>
+                    <button
+                      class="carousel-control-next"
+                      type="button"
+                      data-bs-target="#carouselNewArrivals"
+                      data-bs-slide="next"
+                    >
+                      <span
+                        class="carousel-control-next-icon"
+                        aria-hidden="true"
+                      ></span
+                      ><span class="visually-hidden">Next </span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================-->
+      <!-- <section> begin ============================-->
+      <!-- ============================================-->
+      <!-- <section> begin ============================-->
+      <section>
+        <div class="container">
+          <div class="row h-100 g-0">
+            <div class="col-md-6">
+              <div
+                class="bg-300 p-4 h-100 d-flex flex-column justify-content-center"
+              >
+                <h1 class="fw-semi-bold lh-sm fs-4 fs-lg-5 fs-xl-6">
+                  Gentle Formal Looks
+                </h1>
+                <p class="mb-5 fs-1">
+                  We provide the top formal apparel package to make your job
+                  look confident and comfortable. Stay connect.
+                </p>
+                <div class="d-grid gap-2 d-md-block">
+                  <a class="btn btn-lg btn-dark" href="/view-men" role="button"
+                    >Explore Collection</a
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="card card-span h-100 text-white">
+                <img
+                  class="card-img h-100"
+                  src="assets/img/gallery/sharp-dress.png"
+                  alt="..."
+                /><a class="stretched-link" href="#!"></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- end of .container-->
+      </section>
+      <!-- <section> close ============================-->
+      <!-- ============================================-->
+
+      <!-- ============================================-->
+      <!-- <section> begin ============================-->
+
+      <section class="py-11">
+        <div
+          class="bg-holder overlay overlay-0"
+          style="
+            background-image: url(assets/img/gallery/cta.png);
+            background-position: center;
+            background-size: cover;
+          "
+        ></div>
+        <!--/.bg-holder-->
+
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div
+                class="carousel slide carousel-fade"
+                id="carouseCta"
+                data-bs-ride="carousel"
+              >
+                <div class="carousel-inner">
+                  <div class="carousel-item active" data-bs-interval="10000">
+                    <div class="row h-100 align-items-center g-2">
+                      <div class="col-12">
+                        <div class="text-light text-center py-2">
+                          <h5
+                            class="display-4 fw-normal text-400 fw-normal mb-4"
+                          >
+                            visit our Outlets in
+                          </h5>
+                          <h1 class="display-1 text-white fw-normal mb-8">
+                            London
+                          </h1>
+                          <a
+                            class="btn btn-lg text-light fs-1"
+                            href="#!"
+                            role="button"
+                            >See Addresses
+                            <svg
+                              class="bi bi-arrow-right-short"
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="23"
+                              height="23"
+                              fill="currentColor"
+                              viewBox="0 0 16 16"
+                            >
+                              <path
+                                fill-rule="evenodd"
+                                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+                              ></path></svg
+                          ></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="carousel-item" data-bs-interval="5000">
+                    <div class="row h-100 align-items-center g-2">
+                      <div class="col-12">
+                        <div class="text-light text-center py-2">
+                          <h5
+                            class="display-4 fw-normal text-400 fw-normal mb-4"
+                          >
+                            visit our Outlets in
+                          </h5>
+                          <h1 class="display-1 text-white fw-normal mb-8">
+                            Bristol
+                          </h1>
+                          <a
+                            class="btn btn-lg text-light fs-1"
+                            href="#!"
+                            role="button"
+                            >See Addresses
+                            <svg
+                              class="bi bi-arrow-right-short"
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="23"
+                              height="23"
+                              fill="currentColor"
+                              viewBox="0 0 16 16"
+                            >
+                              <path
+                                fill-rule="evenodd"
+                                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+                              ></path></svg
+                          ></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="carousel-item" data-bs-interval="3000">
+                    <div class="row h-100 align-items-center g-2">
+                      <div class="col-12">
+                        <div class="text-light text-center py-2">
+                          <h5
+                            class="display-4 fw-normal text-400 fw-normal mb-4"
+                          >
+                            visit our Outlets in
+                          </h5>
+                          <h1 class="display-1 text-white fw-normal mb-8">
+                            Birmingham
+                          </h1>
+                          <a
+                            class="btn btn-lg text-light fs-1"
+                            href="#!"
+                            role="button"
+                            >See Addresses
+                            <svg
+                              class="bi bi-arrow-right-short"
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="23"
+                              height="23"
+                              fill="currentColor"
+                              viewBox="0 0 16 16"
+                            >
+                              <path
+                                fill-rule="evenodd"
+                                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
+                              ></path></svg
+                          ></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <button
+                      class="carousel-control-prev"
+                      type="button"
+                      data-bs-target="#carouseCta"
+                      data-bs-slide="prev"
+                    >
+                      <span
+                        class="carousel-control-prev-icon"
+                        aria-hidden="true"
+                      ></span
+                      ><span class="visually-hidden">Previous</span>
+                    </button>
+                    <button
+                      class="carousel-control-next"
+                      type="button"
+                      data-bs-target="#carouseCta"
+                      data-bs-slide="next"
+                    >
+                      <span
+                        class="carousel-control-next-icon"
+                        aria-hidden="true"
+                      ></span
+                      ><span class="visually-hidden">Next </span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================-->
+      <!-- <section> begin ============================-->
+      <section class="py-0 pt-7">
+        <div class="container">
+          
+            <div class="col-md-7">
+              <div class="text-center text-md-end">
+                <a href="https://www.facebook.com/campaign/landing.php?campaign_id=14884913640&extra_1=s%7Cc%7C589460569849%7Cb%7Cfacebook%20%27%7C&placement=&creative=589460569849&keyword=facebook%20%27&partner_id=googlesem&extra_2=campaignid%3D14884913640%26adgroupid%3D128696220912%26matchtype%3Db%26network%3Dg%26source%3Dnotmobile%26search_or_content%3Ds%26device%3Dc%26devicemodel%3D%26adposition%3D%26target%3D%26targetid%3Dkwd-327195741349%26loc_physical_ms%3D9075226%26loc_interest_ms%3D%26feeditemid%3D%26param1%3D%26param2%3D&gclid=Cj0KCQjwk7ugBhDIARIsAGuvgPYSxNPP-QIticbrA5npV9-fytwsesY0GssCVC0ilL4C5H_S3Aw6oG0aAjerEALw_wcB"
+                  ><span class="me-4" data-feather="facebook"></span></a
+                ><a href="https://www.instagram.com/">
+                  <span class="me-4" data-feather="instagram"></span></a
+                ><a href="https://www.youtube.com/">
+                  <span class="me-4" data-feather="youtube"></span></a
+                ><a href="https://twitter.com/i/flow/login?input_flow_data=%7B%22requested_variant%22%3A%22eyJsYW5nIjoiZW4ifQ%3D%3D%22%7D">
+                  <span class="me-4" data-feather="twitter"></span
+                ></a>
+              
+          
+          </div>
+        </div>
+        <br>
+        <br>
+        <!-- end of .container-->
+      </section>
+      <!-- <section> close ============================-->
+      <!-- ============================================-->
+    </main>
+    <!-- ===============================================-->
+    <!--    End of Main Content-->
+    <!-- ===============================================-->
+
+    <!-- ===============================================-->
+    <!--    JavaScripts-->
+    <!-- ===============================================-->
+    <script src="vendors/@popperjs/popper.min.js"></script>
+    <script src="vendors/bootstrap/bootstrap.min.js"></script>
+    <script src="vendors/is/is.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=window.scroll"></script>
+    <script src="vendors/feather-icons/feather.min.js"></script>
+    <script>
+      feather.replace();
+    </script>
+    <script src="assets/js/theme.js"></script>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400;500;600;700;800;900&amp;display=swap"
+      rel="stylesheet"
+    />
+  </body>
+</html>
+
+<%-include('../layouts/footer.ejs') -%>
