@@ -52,7 +52,6 @@ const sendVerifyMail = async (username, email, _id) => {
         _id +
         '"> verify </a> </p>',
     };
-    //http://127.0.0.1:3000/
     transporter.sendMail(mailOptions, function (error, info) {
       if (error) {
         console.log(error);
