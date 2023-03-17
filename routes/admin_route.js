@@ -1,7 +1,7 @@
 const express = require('express')
 const adminRoute = express()
 const bodyParser = require('body-parser')
-const adminController = require('../controllers/adminController')
+const adminController = require('../controllers/admin_controller')
 const session = require("express-session");
 const multer = require('multer')
 const oneDay = 1000 * 60 * 60 * 24;

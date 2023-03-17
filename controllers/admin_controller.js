@@ -1,9 +1,9 @@
-const User = require("../models/userModel");
-const Product = require("../models/productModel");
-const Category = require("../models/categoryModel");
-const Order = require("../models/orderModel");
-const Categories = require("../models/categoryModel");
-const Coupon = require("../models/couponModel");
+const User = require("../models/user-model");
+const Product = require("../models/product-model");
+const Category = require("../models/category-model");
+const Order = require("../models/order-model");
+const Categories = require("../models/category-model");
+const Coupon = require("../models/coupon-model");
 const { ObjectId } = require("mongodb");
 const excelJS = require("exceljs");
 const ejs = require("ejs");

@@ -1,16 +1,16 @@
-const User = require("../models/userModel");
-const Product = require("../models/productModel");
-const Cart = require("../models/cartModel");
-const Wishlist = require("../models/wishlistModel");
-const Category = require("../models/categoryModel");
-const Order = require("../models/orderModel");
+const User = require("../models/user-model");
+const Product = require("../models/product-model");
+const Cart = require("../models/cart-model");
+const Wishlist = require("../models/wishlist-model");
+const Category = require("../models/category-model");
+const Order = require("../models/order-model");
 const bcrypt = require("bcrypt");
 const nodemailer = require("nodemailer");
 const { ObjectId } = require("mongodb");
 const Razorpay = require("razorpay");
 const { log } = require("console");
 const randomstring = require("randomstring");
-const Coupon = require("../models/couponModel");
+const Coupon = require("../models/coupon-model");
 const instance = new Razorpay({
   key_id: "rzp_test_uMmtCx7BlPzTfd",
   key_secret: "oUuPVJbRDxl7t2HLGn4J6SiJ",
@@ -37,12 +37,12 @@ const sendVerifyMail = async (username, email, _id) => {
       secure: false,
       requireTLS: true,
       auth: {
-        user: "Amdazzlin01@gmail.com",
-        pass: "nrpwenypdsjihpru",
+        user: process.env.EMAIL,
+        pass: process.env.PSWD,
       },
     });
     const mailOptions = {
-      from: "Amdazzlin01@gmail.com",
+      from: process.env.EMAIL,
       to: email,
       subject: "for verification mail",
       html:
@@ -247,7 +247,7 @@ const loadverifyOTP = async (req, res) => {
     if (req.session.userlogged) {
       res.redirect("/");
     } else {
-      res.render("verifyOTPpage");
+      res.render("verifyotppage");
     }
   } catch (error) {
     console.log(error.message);
@@ -291,7 +291,7 @@ const sendOTP = async (req, res) => {
   } catch (error) {
     console.log(error.message);
   }
-  res.redirect("/verifyOTPpage");
+  res.redirect("/verifyotppage");
 };
 
 // To verify the otp provided by the user----------------------------------
@@ -301,7 +301,7 @@ const verifyOTP = async (req, res) => {
     req.session.userlogged = true;
     res.redirect("/");
   } else {
-    res.render("verifyOTPpage", { message: "Invalid OTP" });
+    res.render("verifyotppage", { message: "Invalid OTP" });
   }
 };
 

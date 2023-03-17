@@ -14,17 +14,18 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 
+
 //to use static files
 app.use(express.static('public')); 
 
 
 //for user routes
-const userRoute = require('./routes/userRoute')
+const userRoute = require('./routes/user_route')
 app.use('/', userRoute)
 
 
 //for admin routes
-const adminRoute = require('./routes/adminRoute')
+const adminRoute = require('./routes/admin_route')
 app.use('/admin', adminRoute)
 
 
