@@ -33,7 +33,8 @@ const adminDashboard = async (req, res) => {
       const products = await Product.countDocuments();
       const categories = await Categories.countDocuments();
       const orders = await Order.find().sort({ Date: -1 }).limit(3);
-      const total = await Order.aggregate([
+      let total = 0;
+      total = await Order.aggregate([
         {
           $match: {
             status: "placed",
@@ -42,23 +43,26 @@ const adminDashboard = async (req, res) => {
 
         {
           $group: {
-            _id: null,
+            _id: null,     
             total: { $sum: "$totalAmount" },
           },
         },
       ]).exec();
 
-      const Total = total[0].total;
-
+      var Total = total[0]?.total;
+      console.log(Total); 
+      console.log(pending);   
+       
+        
       res.render("admin-dashboard", {
         placed,
         pending,
         orders,
         categories,
         users,
-        products,
+        products,  
         Total,
-      });
+      }); 
     } else {
       res.redirect("/admin");
     }
