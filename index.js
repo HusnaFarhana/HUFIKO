@@ -5,7 +5,9 @@ const bodyParser = require("body-parser");
 const fileUpload = require('express-fileupload')
 
 mongoose.set('strictQuery',false)
-mongoose.connect('mongodb://127.0.0.1:27017/u-m-s')
+mongoose.connect(
+  "mongodb+srv://amdazzlin01:Y51FNAqJA1JqlQyz@cluster0.tabpewl.mongodb.net/test"
+);
 
 app.set('view engine','ejs')
 app.set('views', 'views')
