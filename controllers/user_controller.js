@@ -48,10 +48,11 @@ const sendVerifyMail = async (username, email, _id) => {
       html:
         "<p>Hi " +
         username +
-        ', please click here to <a href="http://127.0.0.1:3000/verify?id=' +
+        ', please click here to <a href="https://hufiko.store/verify?id=' +
         _id +
         '"> verify </a> </p>',
     };
+    //http://127.0.0.1:3000/
     transporter.sendMail(mailOptions, function (error, info) {
       if (error) {
         console.log(error);
