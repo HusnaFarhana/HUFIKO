@@ -44,6 +44,7 @@ userRoute.get('/place-order', userController.placeOrder);
 userRoute.get("/order-placed", userController.orderPlaced);
 userRoute.get("/view-order-products", userController.viewOrderProducts);
 userRoute.get("/delete-address", userController.deleteAddress);
+userRoute.get("/view-category", userController.viewCategory);
 
 
 

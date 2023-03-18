@@ -48,7 +48,7 @@ const sendVerifyMail = async (username, email, _id) => {
       html:
         "<p>Hi " +
         username +
-        ', please click here to <a href="https://hufiko.store/verify?id=' +
+        ', please click here to <a href="http://hufiko.store/verify?id=' +
         _id +
         '"> verify </a> </p>',
     };
@@ -182,11 +182,11 @@ const loadHome = async (req, res) => {
       log = "logedin";
     } else {
       log = "loggedout";
-    }
+    } 
     res.render("user-home", {
       abc: log,
       product: productData,
-      user: req.session.userid,
+      user: req.session.userid, 
       cat: cate,
       newProducts: newProducts,
       newProducts2      
@@ -636,7 +636,23 @@ const productView = async (req, res) => {
     console.log("error");
   }
 };
-
+const viewCategory = async (req, res) => {
+  const cat = await Category.findById(req.query.id);
+  const newProducts = await Product.find().sort({ createdAt: -1 }).limit(4);
+  const newProducts2 = await Product.find().sort({ createdAt: 1 }).limit(4);
+  const category = cat.name;
+  const cate = await Category.find();
+  const product = await Product.find({ category: category })  
+  let log;    
+  if (req.session.userlogged == true) {
+   log = "logedin";
+ } else {
+   log = "loggedout";
+ }
+  res.render("view-products", { product, cate, newProducts, newProducts2,abc:log});
+     
+}   
+      
 const deleteWishlistItem = async (req, res) => {
   try {
     if (req.session.userlogged) {
@@ -1100,4 +1116,5 @@ module.exports = {
   forgetPasswordLoad,
   resetPassword,
   applyCoupon,
+  viewCategory,
 };

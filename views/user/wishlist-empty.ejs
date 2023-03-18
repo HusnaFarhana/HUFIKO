@@ -126,7 +126,7 @@
           <div class="collapse navbar-collapse border-top border-lg-0 mt-4 mt-lg-0" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                <% cate.forEach(function(cate){%>
-              <li class="nav-item px-2"><a class="nav-link fw-medium active" aria-current="page" href="/view-<%= cate.name %>"><%= cate.name%></a></li>
+              <li class="nav-item px-2"><a class="nav-link fw-medium active" aria-current="page" href="/view-category?id=<%= cate._id %>"><%= cate.name%></a></li>
                <%})%> 
               <li class="nav-item px-2"><a class="nav-link fw-medium" href="/viewProducts">All Items</a></li>
               
