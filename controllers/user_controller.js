@@ -603,7 +603,8 @@ const viewCategory = async (req, res) => {
       newProducts,
       newProducts2,     
       abc: log,
-    });   
+    }); 
+    
   
   } catch (error) {
     console.log(error.message);
