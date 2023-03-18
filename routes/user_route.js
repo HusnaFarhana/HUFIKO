@@ -34,8 +34,6 @@ userRoute.get("/", userController.loadHome);
 userRoute.get("/logout", userController.userLogout);
 userRoute.get("/verify", userController.verifyMail);
 userRoute.get("/viewProducts", userController.viewProducts);
-userRoute.get("/view-Men", userController.viewMen);
-userRoute.get("/view-Women", userController.viewWomen);
 userRoute.get("/view-wishlist",userController.viewWishlist);
 userRoute.get("/view-cart",userController.viewCart);
 userRoute.get("/view-orders", userController.viewOrders);

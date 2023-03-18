@@ -183,13 +183,14 @@ const loadHome = async (req, res) => {
     } else {
       log = "loggedout";
     } 
+    console.log("home loaded");
     res.render("user-home", {
       abc: log,
       product: productData,
       user: req.session.userid, 
       cat: cate,
       newProducts: newProducts,
-      newProducts2      
+      newProducts2       
     });
   } catch (error) {
     console.log(error.message);
@@ -478,61 +479,6 @@ const updateProfile = async (req, res) => {
   }
 };
 
-const viewMen = async (req, res) => {
-  try {
-    let log;
-    const cate = await Category.find();
-    if (req.session.userlogged) {
-      log = "loggedin";
-    } else {
-      log = "loggedout";
-    }
-    const productData = await Product.find({
-      category: "Men",
-      deleted: "false",
-    });
-    const newProducts = await Product.find().sort({ createdAt: -1 }).limit(4);
-    const newProducts2 = await Product.find().sort({ createdAt: 1 }).limit(4);
-
-    res.render("view-men", {
-      product: productData,
-      abc: log,
-      cate,
-      newProducts,
-      newProducts2,
-    });
-  } catch (error) {
-    console.log(error.message);
-  }
-};
-
-const viewWomen = async (req, res) => {
-  try {
-    let log;
-    const cate = await Category.find();
-    if (req.session.userlogged) {
-      log = "loggedin";
-    } else {
-      log = "loggedout";
-    }
-    const productData = await Product.find({
-      category: "Women",
-      deleted: "false",
-    });
-    const newProducts = await Product.find().sort({ createdAt: -1 }).limit(4);
-    const newProducts2 = await Product.find().sort({ createdAt: 1 }).limit(4);
-
-    res.render("view-women", {
-      product: productData,
-      abc: log,
-      cate,
-      newProducts,
-      newProducts2,
-    });
-  } catch (error) {
-    console.log(error.message);
-  }
-};
 
 const addtocart = async (req, res) => {
   try {
@@ -637,19 +583,31 @@ const productView = async (req, res) => {
   }
 };
 const viewCategory = async (req, res) => {
-  const cat = await Category.findById(req.query.id);
-  const newProducts = await Product.find().sort({ createdAt: -1 }).limit(4);
-  const newProducts2 = await Product.find().sort({ createdAt: 1 }).limit(4);
-  const category = cat.name;
-  const cate = await Category.find();
-  const product = await Product.find({ category: category })  
-  let log;    
-  if (req.session.userlogged == true) {
-   log = "logedin";
- } else {
-   log = "loggedout";
- }
-  res.render("view-products", { product, cate, newProducts, newProducts2,abc:log});
+  try {
+    const cat = await Category.findById(req.query.id);
+    const newProducts = await Product.find().sort({ createdAt: -1 }).limit(4);
+    const newProducts2 = await Product.find().sort({ createdAt: 1 }).limit(4);
+    const category = cat.name;
+    const cate = await Category.find();
+    const product = await Product.find({ category: category });
+    let log;
+    if (req.session.userlogged == true) {
+      log = "logedin";
+    } else {
+      log = "loggedout";
+    }
+    console.log("category loaded");   
+    res.render("view-products", {
+      product,
+      cate,
+      newProducts,
+      newProducts2,     
+      abc: log,
+    });
+  
+  } catch (error) {
+    console.log(error.message);
+  }
      
 }   
       
@@ -1093,8 +1051,6 @@ module.exports = {
   viewOrders,
   editProfile,
   updateProfile,
-  viewMen,
-  viewWomen,
   addtocart,
   productView,
   addtowishlist,
