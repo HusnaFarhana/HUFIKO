@@ -16,7 +16,7 @@ const loadadminLogin = async (req, res) => {
   try {
     if (req.session.adminlogged) {
       res.redirect("/admin/admin-dashboard");
-    } else {
+    } else { 
       res.render("admin-login");
     }
   } catch (error) {
@@ -38,7 +38,7 @@ const adminDashboard = async (req, res) => {
         {
           $match: {
             status: "placed",
-          },
+          },      
         },
 
         {

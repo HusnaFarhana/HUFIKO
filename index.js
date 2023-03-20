@@ -16,13 +16,13 @@ app.set('views', 'views')
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-
+                  
 
 
 //to use static files
 app.use(express.static('public')); 
  
-
+  
 //for user routes
 const userRoute = require('./routes/user_route')
 app.use('/', userRoute)

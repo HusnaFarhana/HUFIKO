@@ -11,7 +11,7 @@
     <!-- ===============================================-->
     <!--    Document Title-->
     <!-- ===============================================-->
-    <title>Majestic | Landing, Ecommerce &amp; Business Templatee</title>
+    <title>HUFIKO</title>
     <link rel="stylesheet" href="/public/assets/main.js" />
 
     <!-- ===============================================-->
@@ -57,6 +57,39 @@
       }
     </script>
     <style>
+      .searchbody {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .box {
+        height: 30px;
+        display: flex;
+        cursor: pointer;
+        padding: 10px 20px;
+        background: #fff;
+        border-radius: 30px;
+        align-items: center;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      }
+      .box:hover input {
+        width: 400px;
+      }
+
+      .box input {
+        width: 0;
+        outline: none;
+        border: none;
+        font-weight: 500;
+        transition: 0.8s;
+        background: transparent;
+      }
+
+      .box a .fas {
+        color: #1daf;
+        font-size: 18px;
+      }
+
       .productarea {
         margin-top: 10%;
       }
@@ -175,16 +208,17 @@
 
     <main class="main" id="top">
       <nav
-        class="navbar navbar-expand-lg navbar-light fixed-top py-3 d-block"
+        class="navbar navbar-expand-lg navbar-light fixed-top py-1 d-block"
         data-navbar-on-scroll="data-navbar-on-scroll"
       >
         <div class="container">
           <a class="navbar-brand d-inline-flex" href="/"
             ><img
               class="d-inline-block"
-              src="assets/img/gallery/logo.png"
+              src="assets/img/gallery/logo3.png"
               alt="logo"
-            /><span class="text-1000 fs-0 fw-bold ms-2">Majestic</span></a
+              style="width: 4rem"
+            /><span class="text-1000 fs-1 fw-bold mt-3">HUFIKO</span></a
           >
           <button
             class="navbar-toggler collapsed"
@@ -307,6 +341,7 @@
         <div class="col-lg-12 mx-auto text-center mb-6">
           <h5 class="fs-3 fs-lg-5 lh-sm mb-3">Checkout All Products</h5>
         </div>
+        
         <form action="">
           <input type="text" placeholder="Search" name="search" />
           <input type="submit" value="Search" />
@@ -626,9 +661,12 @@
                           <div
                             class="card-img-overlay bg-dark-gradient d-flex flex-column-reverse"
                           >
-                            <h6 class="text-primary">Rs: <%= product.price%></h6>
-                            <p class="text-400 fs-1"><%= product.productname %></p>
-                            
+                            <h6 class="text-primary">
+                              Rs: <%= product.price%>
+                            </h6>
+                            <p class="text-400 fs-1">
+                              <%= product.productname %>
+                            </p>
                           </div>
                           <a class="stretched-link" href="/viewProducts"></a>
                         </div>
@@ -872,12 +910,16 @@
         <div class="container">
           <div class="col-md-7">
             <div class="text-center text-md-end">
-              <a href="https://www.facebook.com/campaign/landing.php?campaign_id=14884913640&extra_1=s%7Cc%7C589460569849%7Cb%7Cfacebook%20%27%7C&placement=&creative=589460569849&keyword=facebook%20%27&partner_id=googlesem&extra_2=campaignid%3D14884913640%26adgroupid%3D128696220912%26matchtype%3Db%26network%3Dg%26source%3Dnotmobile%26search_or_content%3Ds%26device%3Dc%26devicemodel%3D%26adposition%3D%26target%3D%26targetid%3Dkwd-327195741349%26loc_physical_ms%3D9075226%26loc_interest_ms%3D%26feeditemid%3D%26param1%3D%26param2%3D&gclid=Cj0KCQjwk7ugBhDIARIsAGuvgPYSxNPP-QIticbrA5npV9-fytwsesY0GssCVC0ilL4C5H_S3Aw6oG0aAjerEALw_wcB"><span class="me-4" data-feather="facebook"></span></a
+              <a
+                href="https://www.facebook.com/campaign/landing.php?campaign_id=14884913640&extra_1=s%7Cc%7C589460569849%7Cb%7Cfacebook%20%27%7C&placement=&creative=589460569849&keyword=facebook%20%27&partner_id=googlesem&extra_2=campaignid%3D14884913640%26adgroupid%3D128696220912%26matchtype%3Db%26network%3Dg%26source%3Dnotmobile%26search_or_content%3Ds%26device%3Dc%26devicemodel%3D%26adposition%3D%26target%3D%26targetid%3Dkwd-327195741349%26loc_physical_ms%3D9075226%26loc_interest_ms%3D%26feeditemid%3D%26param1%3D%26param2%3D&gclid=Cj0KCQjwk7ugBhDIARIsAGuvgPYSxNPP-QIticbrA5npV9-fytwsesY0GssCVC0ilL4C5H_S3Aw6oG0aAjerEALw_wcB"
+                ><span class="me-4" data-feather="facebook"></span></a
               ><a href="https://www.instagram.com/">
                 <span class="me-4" data-feather="instagram"></span></a
               ><a href="https://www.youtube.com/">
                 <span class="me-4" data-feather="youtube"></span></a
-              ><a href="https://twitter.com/i/flow/login?input_flow_data=%7B%22requested_variant%22%3A%22eyJsYW5nIjoiZW4ifQ%3D%3D%22%7D">
+              ><a
+                href="https://twitter.com/i/flow/login?input_flow_data=%7B%22requested_variant%22%3A%22eyJsYW5nIjoiZW4ifQ%3D%3D%22%7D"
+              >
                 <span class="me-4" data-feather="twitter"></span
               ></a>
             </div>

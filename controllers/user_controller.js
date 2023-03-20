@@ -110,7 +110,7 @@ const insertUser = async (req, res) => {
       }
     }
   } catch (error) {
-    res.render('404',{message:"Error Found"})
+    res.render("404", { message: "Error Found" });
   }
 };
 
@@ -173,24 +173,22 @@ const loadHome = async (req, res) => {
     const cate = await Category.find();
     let log;
     const productData = await Product.find().limit(4);
-    const newProducts = await Product.find().sort({createdAt:-1}).limit(4);
-    const newProducts2 = await Product.find()
-          .sort({ createdAt: 1 })
-          .limit(4);
+    const newProducts = await Product.find().sort({ createdAt: -1 }).limit(4);
+    const newProducts2 = await Product.find().sort({ createdAt: 1 }).limit(4);
 
     if (req.session.userlogged == true) {
       log = "logedin";
     } else {
       log = "loggedout";
-    } 
+    }
     console.log("home loaded");
     res.render("user-home", {
       abc: log,
       product: productData,
-      user: req.session.userid, 
+      user: req.session.userid,
       cat: cate,
       newProducts: newProducts,
-      newProducts2       
+      newProducts2,
     });
   } catch (error) {
     console.log(error.message);
@@ -328,7 +326,13 @@ const viewProducts = async (req, res) => {
     const newProducts = await Product.find().sort({ createdAt: -1 }).limit(4);
     const newProducts2 = await Product.find().sort({ createdAt: 1 }).limit(4);
 
-    res.render("view-products", { product: productData, abc: log, cate ,newProducts,newProducts2});
+    res.render("view-products", {
+      product: productData,
+      abc: log,
+      cate,
+      newProducts,
+      newProducts2,
+    });
   } catch (error) {
     console.log(error.message);
   }
@@ -432,7 +436,9 @@ const viewOrders = async (req, res) => {
     if (req.session.userlogged) {
       const cate = await Category.find();
       const userid = req.session.userid;
-      const orders = await Order.find({ userId: userid }).sort({ Date: -1 }).exec();
+      const orders = await Order.find({ userId: userid })
+        .sort({ Date: -1 })
+        .exec();
 
       console.log(orders);
       res.render("view-orders", { orders, cate });
@@ -478,7 +484,6 @@ const updateProfile = async (req, res) => {
     console.log(error.message);
   }
 };
-
 
 const addtocart = async (req, res) => {
   try {
@@ -596,22 +601,19 @@ const viewCategory = async (req, res) => {
     } else {
       log = "loggedout";
     }
-    console.log("category loaded");   
+    console.log("category loaded");
     res.render("view-products", {
       product,
       cate,
       newProducts,
-      newProducts2,     
+      newProducts2,
       abc: log,
-    }); 
-    
-  
+    });
   } catch (error) {
     console.log(error.message);
   }
-     
-}   
-      
+};
+
 const deleteWishlistItem = async (req, res) => {
   try {
     if (req.session.userlogged) {
@@ -672,10 +674,9 @@ const changeProQnty = async (req, res) => {
 
 const placeOrder = async (req, res) => {
   try {
-    const cate = await Category.find();
     if (req.session.userlogged) {
       const userid = req.session.userid;
-
+      const cate = await Category.find();
       const total = await Cart.aggregate([
         {
           $match: { user: ObjectId(userid) },
@@ -696,7 +697,7 @@ const placeOrder = async (req, res) => {
           },
         },
       ]).exec();
-      var Total = total[0].total;
+      var Total = total[0]?.total;
       const addresses = await User.aggregate([
         {
           $match: { _id: ObjectId(userid) },
@@ -712,13 +713,13 @@ const placeOrder = async (req, res) => {
         },
       ]);
       res.render("placeorder", { Total, userid, addresses, cate });
-      console.log(addresses[1].address.name);
+      // console.log(addresses[1].address.name);
     } else {
       res.redirect("/");
     }
   } catch (error) {
     console.log(error.message);
-    res.redirect('/')
+    res.redirect("/");
   }
 };
 
@@ -728,11 +729,11 @@ const orderPlaced = async (req, res) => {
     if (req.session.userlogged) {
       res.render("order-placed", { cate });
     } else {
-      res.redirect('/')
+      res.redirect("/");
     }
   } catch (error) {
     console.log(error.message);
-    res.redirect('/')
+    res.redirect("/");
   }
 };
 const viewOrderProducts = async (req, res) => {
@@ -851,8 +852,8 @@ const postplaceOrder = async (req, res) => {
       res.redirect("/");
     }
   } catch (error) {
-    res.render('404')
-    res.redirect('/')
+    res.render("404");
+    res.redirect("/");
   }
 };
 
@@ -867,15 +868,17 @@ const verifyPayment = async (req, res, next) => {
     };
 
     const generated_signature = hmac_sha256(
-      details['payment[razorpay_order_id]'] + "|" + details['payment[razorpay_payment_id]'],
+      details["payment[razorpay_order_id]"] +
+        "|" +
+        details["payment[razorpay_payment_id]"],
       secret
     );
 
-    console.log(details['order[receipt]']);
-      console.log("here it isss"+details["payment[razorpay_payment_id]"]);
-    if (generated_signature == details['payment[razorpay_signature]']) {
+    console.log(details["order[receipt]"]);
+    console.log("here it isss" + details["payment[razorpay_payment_id]"]);
+    if (generated_signature == details["payment[razorpay_signature]"]) {
       await Order.findByIdAndUpdate(
-        { _id: details['order[receipt]'] },
+        { _id: details["order[receipt]"] },
         { $set: { status: "placed" } }
       );
       await Order.findByIdAndUpdate(
@@ -1022,11 +1025,10 @@ const applyCoupon = async (req, res) => {
           res.json({ success: true, grandTotal: grandTotal });
         }
       } else {
-        res.json({success:false})
+        res.json({ success: false });
       }
     } else {
       res.json({ success: false });
-
     }
   } catch (error) {
     console.log(error.message);
