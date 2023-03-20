@@ -597,7 +597,7 @@ const viewCategory = async (req, res) => {
     const product = await Product.find({ category: category });
     let log;
     if (req.session.userlogged) {
-      log = "loggedin";
+      log = "loggedin";     
     } else {
       log = "loggedout";
     }
